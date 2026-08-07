@@ -1,0 +1,314 @@
+:root {
+  --bg: #f2f2f2;
+  --surface: #fbfbfb;
+  --line: #d7d7d7;
+  --text: #3d3d3d;
+  --muted: #6b6b6b;
+  --accent: #1f7dff;
+  --accent-dark: #145ec6;
+  --focus: #fb9f29;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "IBM Plex Sans", sans-serif;
+  color: var(--text);
+  background:
+    linear-gradient(rgba(245, 248, 253, 0.88), rgba(245, 248, 253, 0.9)),
+    url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80")
+      center / cover no-repeat fixed;
+}
+
+.shell {
+  width: min(980px, 94vw);
+  margin: 2rem auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+
+.hub-page {
+  min-height: 100vh;
+  padding: 1.2rem;
+}
+
+.hub-shell {
+  width: min(1100px, 94vw);
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 48px rgba(13, 29, 56, 0.14);
+  padding: 1.2rem;
+}
+
+.hub-back {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  font-family: "Space Grotesk", sans-serif;
+  cursor: pointer;
+}
+
+.hub-hero {
+  padding: 1.2rem 0 1rem;
+}
+
+.hub-eyebrow {
+  margin: 0 0 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  color: #2e64aa;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.hub-hero h1 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.7rem, 3vw, 3rem);
+}
+
+.hub-hero p {
+  max-width: 72ch;
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.hub-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 1rem;
+}
+
+.hub-card h2 {
+  margin: 0 0 0.5rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.1rem;
+}
+
+.hub-card p,
+.hub-card li {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.hub-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.hub-card-wide {
+  grid-column: 1 / -1;
+}
+
+.terms-card {
+  border-color: #b7c9e8;
+  background: linear-gradient(180deg, #ffffff, #f4f8ff);
+}
+
+.terms-card h2 {
+  color: #1f4f8c;
+}
+
+.right-stage {
+  min-height: 560px;
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(2px);
+  border: 1px solid var(--line);
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.account-nav {
+  border: 1px solid var(--line);
+  padding: 0.85rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.6rem;
+  background: var(--surface);
+}
+
+.account-nav button {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  padding: 0.4rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.92rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.account-nav button:hover,
+.account-nav button:focus-visible {
+  background: #eff6ff;
+  color: #2e64aa;
+}
+
+.bank-grid {
+  border: 1px solid var(--line);
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.05rem;
+  background: #e0e0e0;
+}
+
+.card-option {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.2rem, 1.4vw, 1.95rem);
+  color: #5a5a5a;
+  text-align: left;
+  padding: 2.1rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.card-option:hover,
+.card-option:focus-visible {
+  background: #fff5e6;
+  transform: translateY(-2px);
+}
+
+.pay-panel {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 1rem 1.1rem;
+  animation: rise 420ms ease;
+}
+
+.pay-panel h2 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.25rem;
+}
+
+.pay-panel p {
+  margin: 0.55rem 0 0.9rem;
+  color: var(--muted);
+}
+
+.payment-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.8rem;
+  align-items: end;
+}
+
+.payment-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: #575757;
+}
+
+.payment-form input,
+.payment-form select,
+.payment-form button {
+  min-height: 2.65rem;
+  border-radius: 8px;
+  border: 1px solid #cfcfcf;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.95rem;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.payment-form button {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--accent), #3296ff);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.payment-form button:hover,
+.payment-form button:focus-visible {
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+#status {
+  margin-top: 0.8rem;
+  min-height: 1.3rem;
+  font-weight: 500;
+}
+
+#status.error {
+  color: #b10026;
+}
+
+#status.success {
+  color: #0b6a1e;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1040px) {
+  .right-stage {
+    min-height: auto;
+  }
+
+  .hub-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .hub-page {
+    padding: 0.7rem;
+  }
+
+  .hub-shell,
+  .shell {
+    margin: 1rem auto;
+    padding: 0.6rem;
+  }
+
+  .account-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bank-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-form {
+    grid-template-columns: 1fr;
+  }
+
+  .card-option {
+    font-size: 1.35rem;
+  }
+}

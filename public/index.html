@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="hub-page" id="investmentsHubPage" hidden aria-label="Investments Hub page">
+      <div class="hub-shell">
+        <button class="hub-back" id="closeHubBtn" type="button">Back to dashboard</button>
+        <header class="hub-hero">
+          <p class="hub-eyebrow">Investments Hub</p>
+          <h1>Join investment communities respectfully</h1>
+          <p>
+            Learn from experienced people by showing up honestly, contributing value, and respecting the rules of the room.
+          </p>
+        </header>
+
+        <div class="hub-grid">
+          <article class="hub-card">
+            <h2>Start by listening</h2>
+            <p>Read the community rules, observe the tone, and learn what kind of questions are already being answered.</p>
+          </article>
+
+          <article class="hub-card">
+            <h2>Introduce yourself clearly</h2>
+            <p>Say what you are learning, what your goals are, and where you are in your journey. Be direct and honest.</p>
+          </article>
+
+          <article class="hub-card">
+            <h2>Offer value first</h2>
+            <p>Share your research, summarize useful articles, or ask specific questions that help the group think more clearly.</p>
+          </article>
+
+          <article class="hub-card">
+            <h2>Respect boundaries</h2>
+            <p>Do not pressure people for private access, signals, or money. Never pretend to be more experienced than you are.</p>
+          </article>
+
+          <article class="hub-card hub-card-wide">
+            <h2>Practical habits</h2>
+            <ul>
+              <li>Keep a long-term view instead of chasing hype.</li>
+              <li>Learn diversification and risk management before acting.</li>
+              <li>Ask for explanations, not guarantees.</li>
+              <li>Track decisions so you can review what worked and what did not.</li>
+            </ul>
+          </article>
+
+          <article class="hub-card hub-card-wide terms-card" id="termsCard">
+            <h2>Terms & Conditions for Community Participation</h2>
+            <p>
+              By using this hub or joining any related investment community, you agree to participate respectfully and honestly.
+            </p>
+            <ul>
+              <li>You will not misrepresent your identity, experience, or intentions.</li>
+              <li>You will not pressure members for private access, money, or trading signals.</li>
+              <li>You will respect community rules, moderation, privacy, and boundaries.</li>
+              <li>You will share information responsibly and avoid misleading claims.</li>
+              <li>You understand that all investing involves risk and that no outcome is guaranteed.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <main class="shell">
+      <section class="right-stage">
+        <nav class="account-nav" aria-label="Account options">
+          <button type="button">Accounts Overview</button>
+          <button type="button">Payments Center</button>
+          <button id="openHubBtn" type="button">Investments Hub</button>
+          <button type="button">Currency Tools</button>
+          <button type="button">Support Desk</button>
+          <button id="openTermsBtn" type="button">Terms &amp; Conditions</button>
+        </nav>
+
+        <section class="bank-grid" aria-label="Bank operations">
+          <button class="card-option" type="button">Investments</button>
+          <button class="card-option" type="button">Floating Currency</button>
+          <button class="card-option" type="button">Withdraw / Deposit</button>
+        </section>
+
+        <section class="pay-panel" aria-label="Telegram payment">
+          <h2>Pay Through Telegram Bot</h2>
+          <p>
+            Uses Telegram payments from your BotFather-configured bot to generate secure invoice links.
+          </p>
+
+          <form id="paymentForm" class="payment-form">
+            <label>
+              Service
+              <select id="planKey" name="planKey" required>
+                <option value="Investments">Investments</option>
+                <option value="FloatingCurrency">Floating Currency</option>
+                <option value="WithdrawDeposit">Withdraw / Deposit</option>
+              </select>
+            </label>
+
+            <label>
+              Amount (USD)
+              <input id="amount" name="amount" type="number" min="1" step="0.01" value="25" required />
+            </label>
+
+            <button id="payBtn" type="submit">Create Telegram Invoice</button>
+          </form>
+
+          <p id="status" role="status" aria-live="polite"></p>
+        </section>
+      </section>
+    </main>
+
+    <script src="runtime-config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

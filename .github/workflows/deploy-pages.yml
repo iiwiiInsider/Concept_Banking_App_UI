@@ -1,0 +1,55 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate runtime config from repository secrets
+        env:
+          API_BASE_URL: ${{ secrets['API_BASE_URL'] }}
+          TELEGRAM_BOT_USERNAME: ${{ secrets['TELEGRAM_BOT_USERNAME'] }}
+        run: |
+          if [ -z "$API_BASE_URL" ]; then
+            echo "Missing required GitHub secret: API_BASE_URL"
+            exit 1
+          fi
+
+          cat > public/runtime-config.js <<EOF
+          window.BANK_APP_CONFIG = {
+            apiBaseUrl: "${API_BASE_URL}",
+            botUsername: "${TELEGRAM_BOT_USERNAME}"
+          };
+          EOF
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

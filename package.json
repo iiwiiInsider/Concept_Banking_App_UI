@@ -1,0 +1,14 @@
+{
+  "name": "bank-skeleton",
+  "version": "1.0.0",
+  "description": "Bank-style landing page with Telegram payment checkout",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2"
+  }
+}
