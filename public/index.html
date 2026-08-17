@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <section class="hub-page" id="investmentsHubPage" hidden aria-label="Investments Hub page">
+    <section class="hub-page" id="investmentsHubPage" hidden aria-label="Terms & Conditions page">
       <div class="hub-shell">
         <button class="hub-back" id="closeHubBtn" type="button">Back to dashboard</button>
         <header class="hub-hero">
@@ -72,51 +72,346 @@
       </div>
     </section>
 
+    <section class="service-page" id="servicePage" hidden aria-label="Service page">
+      <div class="service-shell">
+        <button class="hub-back" id="serviceBackBtn" type="button">Back to dashboard</button>
+        <header class="service-header">
+          <p class="hub-eyebrow" id="serviceEyebrow">Service</p>
+          <h1 id="serviceTitle">Select a service</h1>
+          <p id="serviceDescription">Choose a service to continue to secure payment.</p>
+        </header>
+
+        <section class="investment-tool" id="investmentTool" hidden aria-label="Investment account options">
+          <div class="investment-tool-header">
+            <div>
+              <p class="hub-eyebrow">Investment accounts</p>
+              <h2>Choose how your money works</h2>
+            </div>
+            <span class="exchange-badge">Start with zero balance</span>
+          </div>
+          <div class="investment-options">
+            <article class="investment-option" data-investment="prime">
+              <p class="investment-kicker">Steady income</p>
+              <h3>Prime monthly payout account</h3>
+              <p>Designed for predictable monthly distributions with a measured, income-first approach.</p>
+              <strong>Monthly payout</strong>
+              <div class="investment-card-actions">
+                <button class="investment-info" type="button">More info</button>
+                <button class="investment-select" type="button">Choose account</button>
+              </div>
+            </article>
+            <article class="investment-option" data-investment="riskReward">
+              <p class="investment-kicker">Growth focus</p>
+              <h3>Risk/Reward Account</h3>
+              <p>For users comfortable with changing outcomes in pursuit of higher potential growth.</p>
+              <strong>Variable returns</strong>
+              <div class="investment-card-actions">
+                <button class="investment-info" type="button">More info</button>
+                <button class="investment-select" type="button">Choose account</button>
+              </div>
+            </article>
+            <article class="investment-option" data-investment="bundles">
+              <p class="investment-kicker">Diversified</p>
+              <h3>Bundles Account</h3>
+              <p>Group several investment themes into one account for a broader, balanced allocation.</p>
+              <strong>Grouped strategy</strong>
+              <div class="investment-card-actions">
+                <button class="investment-info" type="button">More info</button>
+                <button class="investment-select" type="button">Choose account</button>
+              </div>
+            </article>
+          </div>
+          <form class="investment-form" id="investmentForm" hidden>
+            <div>
+              <p class="hub-eyebrow">Selected account</p>
+              <h3 id="selectedInvestmentName">Prime monthly payout account</h3>
+            </div>
+            <label>
+              Starting amount (ZAR)
+              <input id="investmentAmount" type="number" min="0" step="0.01" value="0" required />
+            </label>
+            <button class="primary-action" type="submit">Open investment account</button>
+          </form>
+          <p class="investment-status" id="investmentStatus" role="status" aria-live="polite"></p>
+          <p class="investment-footnote">Investment services accept ZAR only.</p>
+        </section>
+
+        <section class="exchange-tool" id="exchangeTool" hidden aria-label="Currency exchange tool">
+          <div class="exchange-tool-header">
+            <div>
+              <p class="hub-eyebrow">Live exchange workspace</p>
+              <h2>Move money between currency accounts</h2>
+            </div>
+            <span class="exchange-badge">Rate preview</span>
+          </div>
+          <form id="exchangeForm" class="exchange-form">
+            <label>
+              From active account
+              <select id="exchangeFrom" required></select>
+            </label>
+            <label>
+              To currency
+              <select id="exchangeTo" required></select>
+            </label>
+            <label>
+              Amount
+              <input id="exchangeAmount" type="number" min="0.01" step="0.01" value="1" required />
+            </label>
+            <div class="exchange-quote" aria-live="polite">
+              <span>You receive</span>
+              <strong id="exchangeQuote">$0.05</strong>
+            </div>
+            <button class="primary-action" type="submit">Preview exchange</button>
+          </form>
+          <p class="exchange-status" id="exchangeStatus" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="withdraw-tool" id="withdrawTool" hidden aria-label="Withdraw and deposit Telegram payment portal">
+          <div class="withdraw-tool-header">
+            <div>
+              <p class="hub-eyebrow">Telegram payment portal</p>
+              <h2>Deposit or withdraw securely</h2>
+            </div>
+            <span class="exchange-badge">Secure invoice link</span>
+          </div>
+          <p class="withdraw-intro">Choose a transaction type and currency. Your Telegram invoice link will open in a new tab for checkout.</p>
+          <form class="withdraw-form" id="withdrawForm">
+            <label>
+              Transaction
+              <select id="withdrawType" required>
+                <option value="deposit">Deposit funds</option>
+                <option value="withdraw">Withdraw funds</option>
+              </select>
+            </label>
+            <label>
+              Currency
+              <select id="withdrawCurrency" required>
+                <option value="ZAR">ZAR · Rand</option>
+                <option value="USD">USD · Dollar</option>
+                <option value="EUR">EUR · Euro</option>
+                <option value="GBP">GBP · Pound</option>
+              </select>
+            </label>
+            <label>
+              Amount
+              <input id="withdrawAmount" type="number" min="1" step="0.01" value="1" required />
+            </label>
+            <button class="primary-action" id="withdrawSubmitBtn" type="submit">Create Telegram invoice</button>
+          </form>
+          <p class="withdraw-status" id="withdrawStatus" role="status" aria-live="polite"></p>
+        </section>
+      </div>
+    </section>
+
+    <section class="investment-info-page" id="investmentInfoPage" hidden aria-label="Investment account information">
+      <div class="service-shell">
+        <button class="hub-back" id="investmentInfoBackBtn" type="button">Back to investments</button>
+        <header class="service-header">
+          <p class="hub-eyebrow">Investment account information</p>
+          <h1 id="investmentInfoTitle">Investment account details</h1>
+          <p id="investmentInfoDescription">More information about this account will be added here.</p>
+        </header>
+        <div class="investment-info-grid">
+          <article class="hub-card">
+            <p class="hub-eyebrow">Where money goes</p>
+            <h2>Use of funds</h2>
+            <p>This section will explain the types of assets, projects, or strategies that receive user funds.</p>
+          </article>
+          <article class="hub-card">
+            <p class="hub-eyebrow">How profits are generated</p>
+            <h2>Profit model</h2>
+            <p>This section will describe the revenue sources, risks, and factors that influence potential returns.</p>
+          </article>
+        </div>
+        <p class="investment-info-note">Investment outcomes are not guaranteed. Review the full account terms before opening an account.</p>
+      </div>
+    </section>
+
+    <section class="account-page" id="accountPage" hidden aria-label="Accounts overview">
+      <div class="account-shell">
+        <button class="hub-back" id="accountBackBtn" type="button">Back to dashboard</button>
+        <header class="service-header">
+          <p class="hub-eyebrow">Accounts Overview</p>
+          <h1>Your currency wallets</h1>
+          <p>Each currency is held in its own wallet so deposits, withdrawals, and exchanges stay easy to track.</p>
+        </header>
+
+        <div class="account-toolbar">
+          <div class="account-view-control">
+            <label for="accountSelect">Active account to view</label>
+            <select id="accountSelect">
+              <option value="ZAR">South African Rand (ZAR)</option>
+            </select>
+          </div>
+          <div class="account-activation-control">
+            <label for="activationSelect">Activate another account</label>
+            <div class="activation-row">
+              <select id="activationSelect"></select>
+              <button class="primary-action" id="activateAccountBtn" type="button">Activate account</button>
+            </div>
+          </div>
+        </div>
+
+        <section class="selected-wallet" aria-live="polite">
+          <div>
+            <p class="hub-eyebrow">Selected account</p>
+            <h2 id="selectedWalletName">South African Rand wallet</h2>
+            <p id="selectedWalletMeta">Primary account · Active</p>
+          </div>
+          <div class="selected-wallet-actions">
+            <strong id="selectedWalletBalance">R50.00</strong>
+            <label class="primary-switch" id="primarySwitchLabel" for="primaryAccountToggle" hidden>
+              <input id="primaryAccountToggle" type="checkbox" />
+              <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+              <span>Set as primary</span>
+            </label>
+            <button class="primary-action" id="openCurrencyAccountBtn" type="button">Open Currency Account</button>
+          </div>
+        </section>
+
+        <section class="coverage-panel" id="coveragePanel" hidden aria-label="Worldwide currency coverage">
+          <div>
+            <p class="hub-eyebrow">Worldwide coverage</p>
+            <h2>Open a currency account anywhere you do business.</h2>
+            <p>Choose from supported settlement currencies across major global regions. New accounts begin with a zero balance.</p>
+          </div>
+          <div class="coverage-grid">
+            <div><strong>Africa</strong><span>ZAR · USD</span></div>
+            <div><strong>Americas</strong><span>USD</span></div>
+            <div><strong>Europe</strong><span>EUR · GBP</span></div>
+            <div><strong>Asia-Pacific</strong><span>No additional currencies enabled</span></div>
+          </div>
+        </section>
+
+        <section class="wallet-grid" aria-label="Currency wallets">
+          <article class="wallet-card wallet-card-primary" data-wallet="ZAR">
+            <div class="wallet-card-topline"><span>ZAR wallet</span><span class="wallet-status">Primary · Active</span></div>
+            <strong>R50.00</strong>
+            <p>Available balance</p>
+          </article>
+          <article class="wallet-card" data-wallet="USD" hidden>
+            <div class="wallet-card-topline"><span>USD wallet</span><span class="wallet-status">Inactive</span></div>
+            <strong>$0.00</strong>
+            <p>Available balance</p>
+          </article>
+          <article class="wallet-card" data-wallet="EUR" hidden>
+            <div class="wallet-card-topline"><span>EUR wallet</span><span class="wallet-status">Inactive</span></div>
+            <strong>€0.00</strong>
+            <p>Available balance</p>
+          </article>
+          <article class="wallet-card" data-wallet="GBP" hidden>
+            <div class="wallet-card-topline"><span>GBP wallet</span><span class="wallet-status">Inactive</span></div>
+            <strong>£0.00</strong>
+            <p>Available balance</p>
+          </article>
+        </section>
+
+      </div>
+    </section>
+
+    <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+    <aside class="account-drawer" id="accountDrawer" hidden aria-label="Manage currency account" aria-hidden="true">
+      <div class="drawer-header">
+        <div>
+          <p class="hub-eyebrow">Account controls</p>
+          <h2 id="drawerTitle">Manage currency account</h2>
+        </div>
+        <button class="drawer-close" id="closeDrawerBtn" type="button" aria-label="Close account controls">×</button>
+      </div>
+
+      <p class="drawer-account" id="drawerAccountName">South African Rand wallet</p>
+
+      <section class="drawer-section">
+        <h3>Information</h3>
+        <dl class="account-details">
+          <div><dt>Currency</dt><dd id="drawerCurrency">ZAR</dd></div>
+          <div><dt>Status</dt><dd id="drawerStatus">Active</dd></div>
+          <div><dt>Balance</dt><dd id="drawerBalance">R50.00</dd></div>
+        </dl>
+      </section>
+
+      <section class="drawer-section">
+        <h3>Monthly statements</h3>
+        <label class="drawer-label" for="statementMonth">Statement month</label>
+        <select id="statementMonth">
+          <option value="2026-08">August 2026</option>
+          <option value="2026-07">July 2026</option>
+          <option value="2026-06">June 2026</option>
+        </select>
+        <button class="drawer-action" id="downloadStatementBtn" type="button">Download statement</button>
+      </section>
+
+      <section class="drawer-section drawer-danger">
+        <h3>Delete account</h3>
+        <p id="deleteHelp">This account can only be deleted when its balance is zero.</p>
+        <button class="delete-action" id="deleteAccountBtn" type="button">Delete currency account</button>
+      </section>
+      <p class="drawer-status" id="drawerStatusMessage" role="status" aria-live="polite"></p>
+    </aside>
+
     <main class="shell">
       <section class="right-stage">
         <nav class="account-nav" aria-label="Account options">
-          <button type="button">Accounts Overview</button>
+          <button id="openAccountsBtn" type="button">Accounts Overview</button>
           <button type="button">Payments Center</button>
-          <button id="openHubBtn" type="button">Investments Hub</button>
-          <button type="button">Currency Tools</button>
-          <button type="button">Support Desk</button>
-          <button id="openTermsBtn" type="button">Terms &amp; Conditions</button>
         </nav>
 
         <section class="bank-grid" aria-label="Bank operations">
-          <button class="card-option" type="button">Investments</button>
-          <button class="card-option" type="button">Floating Currency</button>
-          <button class="card-option" type="button">Withdraw / Deposit</button>
+          <button class="card-option" type="button" data-service="Investments">Investments</button>
+          <button class="card-option" type="button" data-service="FloatingCurrency">Currency Exchange</button>
+          <button class="card-option" type="button" data-service="WithdrawDeposit">Withdraw / Deposit</button>
         </section>
 
-        <section class="pay-panel" aria-label="Telegram payment">
-          <h2>Pay Through Telegram Bot</h2>
-          <p>
-            Uses Telegram payments from your BotFather-configured bot to generate secure invoice links.
-          </p>
-
-          <form id="paymentForm" class="payment-form">
-            <label>
-              Service
-              <select id="planKey" name="planKey" required>
-                <option value="Investments">Investments</option>
-                <option value="FloatingCurrency">Floating Currency</option>
-                <option value="WithdrawDeposit">Withdraw / Deposit</option>
+        <section class="dashboard-grid" aria-label="Account snapshot">
+          <article class="balance-card">
+            <div class="section-heading">
+              <div>
+                <p class="hub-eyebrow">Bank balance</p>
+                <h2>Total available</h2>
+              </div>
+              <button class="visibility-toggle" id="toggleBalanceBtn" type="button" aria-pressed="false">Hide amount</button>
+            </div>
+            <div class="balance-currency-control" id="balanceCurrencyControl">
+              <label for="balanceCurrency">View balance in</label>
+              <select id="balanceCurrency">
+                <option value="ZAR">ZAR · Rand</option>
+                <option value="USD">USD · Dollar</option>
+                <option value="EUR">EUR · Euro</option>
+                <option value="GBP">GBP · Pound</option>
               </select>
-            </label>
+            </div>
+            <strong class="balance-amount" id="balanceAmount">R50.00</strong>
+            <p class="balance-meta" id="balanceMeta">Total across 5 active currency wallets</p>
+          </article>
 
-            <label>
-              Amount (USD)
-              <input id="amount" name="amount" type="number" min="1" step="0.01" value="25" required />
-            </label>
-
-            <button id="payBtn" type="submit">Create Telegram Invoice</button>
-          </form>
-
-          <p id="status" role="status" aria-live="polite"></p>
+          <article class="transfer-card">
+            <div class="section-heading">
+              <div>
+                <p class="hub-eyebrow">Money movement</p>
+                <h2>Sent from this bank</h2>
+              </div>
+              <span class="chart-period">Last 6 months</span>
+            </div>
+            <div class="transfer-chart" aria-label="Monthly transfers from this bank" role="img">
+              <div class="chart-column"><span style="height: 0"></span><small>Mar</small></div>
+              <div class="chart-column"><span style="height: 0"></span><small>Apr</small></div>
+              <div class="chart-column"><span style="height: 0"></span><small>May</small></div>
+              <div class="chart-column"><span style="height: 0"></span><small>Jun</small></div>
+              <div class="chart-column"><span style="height: 0"></span><small>Jul</small></div>
+              <div class="chart-column"><span style="height: 0"></span><small>Aug</small></div>
+            </div>
+            <div class="chart-legend"><span><i class="legend-dot investment-dot"></i><span id="investmentMovementTotal">Investments R0.00</span></span><span><i class="legend-dot exchange-dot"></i><span id="exchangeMovementTotal">Currency Exchange R0.00</span></span></div>
+          </article>
         </section>
       </section>
     </main>
+
+    <footer class="browser-footer">
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <button type="button">Support Desk</button>
+        <button id="openTermsBtn" type="button">Terms &amp; Conditions</button>
+      </nav>
+    </footer>
 
     <script src="runtime-config.js"></script>
     <script src="app.js"></script>
